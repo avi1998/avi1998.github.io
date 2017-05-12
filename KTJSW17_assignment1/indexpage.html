@@ -1,0 +1,166 @@
+<!doctype html>
+<html>
+<head>
+	<title>Index_Page</title>
+	<meta name="viewport" content="width=device-width initial-scale=1.0">
+	<style type="text/css">
+	#media
+	{
+		position: absolute;
+		left: 100px;
+	}
+	#media1
+	{
+		position: absolute;
+		right: 100px;
+	}
+
+	.topnav {
+  overflow: hidden;
+  background-color: #1a252a;
+text-align: center;
+  box-shadow: 0 0 30px black;
+}
+#prof
+{
+	border:2px solid red;
+	margin-left: 600px;
+	margin-right: 600px;
+     cursor: pointer;
+}
+body
+{
+	margin:0px;
+			background: url(cooler.jpg);
+		}
+		#box
+{ position: absolute;
+	width:400px;
+	height:1000px;
+	text-align: center;
+	border-radius: 3px 3px 3px 3px; 
+	left: 470px;
+	top: 200px;
+	box-shadow: 4px 4px 4px 4px rgb(0,0,0);
+}
+label
+{
+	color: white;
+	font-family: "Comic Sans Ms";
+}
+input[type=text],input[type=password] {
+
+    width: 200px; padding: 12px 20px;
+    margin:8px 0;
+    border: none;
+    border-bottom: 1px solid blue;
+    border-radius: 1px;
+    box-sizing: border-box;
+    text-align: center;
+}
+input[type=submit]{
+	 width: 200px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: 1px solid rgb(54,49,204);
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: rgb(63,63,68);
+    text-align: center;
+    font-family: "calibri";
+    font-size: 20px;
+    cursor: pointer;
+}
+		</style>
+</head>
+<body>
+<div class="topnav">
+<img  id="media" src="kgp_logo1.png" height="100px" />
+<img  id="media1" src="kgp_logo1.png" height="100px" />
+<img  id="media2" src="Kshitij_Logo.png" height="100px" />
+<div id="prof"><a><p><b>PROFILE</b></p></a></div>
+</div>
+<div id="box">
+<form id="fo" action="thanks_page.html" method="post">
+<label for="fir">First Name</label>
+<br/>
+<input type="text" id="fir" name="first" placeholder="Enter your first_name">
+<br/>
+<label for="la">Last Name</label>
+<br/>
+<input type="text" id="la" name="last" placeholder="Enter your last_name">
+<br/>
+<label for="use">User Name</label>
+<br/>
+<input type="text" id="use" name="user" placeholder="Enter your user_name">
+<br/>
+<label for="email">E-mail Id</label>
+<br/>
+<input type="text" id="email" name="e-m" placeholder="Enter your email-id">
+<br/>
+<label for="pass">Password</label>
+<br/>
+<input type="password" id="pass" name="passi">
+<br/>
+<label for="cpass">Confirm Password</label>
+<br/>
+<input type="password" id="cpass" name="cpassi">
+<br/>
+<label for="con">Contact</label>
+<br/>
+<input type="text" id="con" name="cont" placeholder="Enter your contact">
+<br/>
+<label for="add">Address</label>
+<br/>
+<input type="text" id="add" name="addr" placeholder="Enter your address">
+<br/>
+<label for="dat">Date Of Birth</label>
+<br/>
+<input type="text" id="dat" name="dob" placeholder="Enter your Date of Birth">
+<br/>
+<label for="gen">Gender</label>
+<br/>
+<select id="gen" name="gend">
+	<option value="mal">Male</option>
+	<option value="femal">Female</option>
+</select>
+<br/>
+<label for="ins">Institute</label>
+<br/>
+<select id="ins" name="inst">
+	<option value="iit_kg">IIT Kharagpur</option>
+	<option value="iit_k">IIT Kanpur</option>
+	<option value="iit_b">IIT Bombay</option>
+	<option value="iit_m">IIT Madras</option>
+	<option value="nit_dg">NIT Durgapur</option>
+	<option value="jad">Jadavpur University</option>
+	<option value="nit_wg">NIT Warangal</option>
+	<option value="cmc">Calcutta Medical College</option>
+</select>
+<br/>
+<label for="yr">Year</label>
+<br/>
+<select id="yr" name="yer">
+	<option value="1">1st year</option>
+	<option value="2">2nd year</option>
+	<option value="3">3rd year</option>
+	<option value="4">4th year</option>
+	<option value="5">5th year</option>
+</select>
+<br/>
+<label for="st">State</label>
+<br/>
+<select id="st" name="stat">
+	<option value="1">Maharashtra</option>
+	<option value="2">Tamil Nadu</option>
+	<option value="3">Telangana</option>
+	<option value="4">Uttar Pradesh</option>
+	<option value="5">West Bengal</option>
+</select>
+<br/>
+<input type="submit" value="SIGN UP">
+<br/>
+</form>
+</div>
+</body>
+</html>
