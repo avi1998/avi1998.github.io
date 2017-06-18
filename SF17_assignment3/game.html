@@ -1,0 +1,248 @@
+
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Mind Game</title>
+      <link rel="icon" href="fv.jpg" type="image/x-icon"/>
+     <style type="text/css">
+     	body {
+	background-image: url("ca1.jpg");
+	}
+
+div#game-box {
+	background: #FF8000;
+	border: #FF3333 1px solid;
+	width: 535px;
+	height: 540px;
+	padding: 24px;
+	margin: 0 auto;
+	border-radius: 20px;
+}
+
+div#game-box>div {
+	background: #00FF00;
+	border: #000 1px solid;
+	border-radius: 10px;
+	width: 71px;
+	height: 71px;
+	float: left;
+	margin: 10px;
+	padding: 20px;
+	font-size: 64px;
+	cursor: pointer;
+	text-align: center;
+	box-shadow: 0 10px #006599;
+	outline: 0;
+	transition: all .1s linear
+}
+
+div#game-box>div:active {
+	box-shadow: 0 0 0 #006599;
+	transform: translateY(6px)
+}
+
+div#count {
+	background-image: url("Optimized-sherlock.jpg");
+	border: #999 1px solid;
+	width: 535px;
+	height: 40px;
+	padding: 24px;
+	margin: 0 auto;
+	margin-bottom: 20px;
+	border-radius: 20px
+}
+
+div#count>p {
+	background: #33FF99;
+	border: #000 1px solid;
+	border-radius: 15px;
+	width: 100px;
+	height: 18px;
+	float: right;
+	margin: 5px;
+	padding: 10px;
+	font-size: 18px;
+	cursor: none;
+	text-align: center;
+	outline: 0
+}
+
+p#timer {
+	background: #FF9933;
+	border: #000 1px solid;
+	border-radius: 15px;
+	width: 100px;
+	height: 18px;
+	float: left;
+	margin: 0;
+	padding: 10px;
+	font-size: 18px;
+	cursor: none;
+	text-align: center;
+	outline: 0;
+}
+
+div#count>button {
+	background: #FF9933;
+	border: #000 1px solid;
+	border-radius: 18px;
+	width: 150px;
+	height: 45px;
+	float: left;
+	margin: 0;
+	padding: 10px;
+	font-size: 18px;
+	cursor: pointer;
+	text-align: center;
+	outline: 0;
+}
+
+a {
+	text-decoration: none
+}
+
+a:active {
+	color: black
+}
+
+a:visited {
+	color: black
+}
+
+p#instruction {
+	background: linear-gradient(to right,#00CCCC,#0000FF);
+	border: #000 1px solid;
+	border-radius: 18px;
+	margin: 0;
+	padding: 10px;
+	font-size: 18px;
+	text-align: center;
+	height: 510px;
+	outline: 0;
+	font-size: 18px;
+	text-align: center
+}
+
+p#instruction>button {
+	background: linear-gradient(to right,#FF0000,#FF8000);;
+	border: #000 1px solid;
+	border-radius: 10px;
+	width: 150px;
+	height: 55px;
+	margin: 0;
+	padding: 10px;
+	font-size: 18px;
+	cursor: pointer;
+	text-align: center;
+	outline: 0
+}
+     </style>
+      <script type="text/javascript" src="jquery.js"></script>
+   </head>
+
+ <body>
+      <div id="count">
+         <button><a href="index.html">New Game</a></button>
+         <p id="timer">Timer: <a id="time">0</a></p>
+         <p id="count">Counter: <a id="clicks">0</a></p>
+      </div>
+      </div>
+      <div id="game-box">
+         <p id="instruction">
+            THE INSTRUCTIONS FOR PLAYING "MIND GAME"<br><br>
+          It is a card as well as mind game.<br>
+           When each block is clicked, an alphabet is shown.<br>
+            The cards are reshuffled all the time.<br>
+            We have to remember what was on each block/card.<br>
+            If two of them matches ,then they remain open on the screen.<br>
+            If they are not matched,then they are again flipped over.<br>
+            The game is finished when all the tasks have been done.<br>
+            <br><br>
+            <button onclick="newBoard();start();">Start the puzzle game</button>
+         </p>
+      </div>
+
+<script type="text/javascript">
+	var letters = ["A", "A", "B", "B", "C", "C", "D", "D", "E", "E", "F", "F", "G", "G", "H", "H"];
+
+var memory_values = [];
+var memory_tile_ids = [];
+var tiles_flipped = 0;
+var clicks = 0;
+var timerInterval = null;
+
+function changeValue() {
+	document.getElementById("time").innerHTML = ++value
+}
+
+function start() {
+	stop();
+	value = 0;
+	timerInterval = setInterval(changeValue, 1000)
+}
+
+Array.prototype.memory_tile_shuffle = function () {
+	var f = this.length,
+		d, e;
+	while (--f > 0) {
+		d = Math.floor(Math.random() * (f + 1));
+		e = this[d];
+		this[d] = this[f];
+		this[f] = e
+	}
+};
+
+function newBoard() {
+	tiles_flipped = 0;
+	var d = "";
+	letters.memory_tile_shuffle();
+	for (var c = 0; c < letters.length; c++) {
+		d += '<div id="tile_' + c + '" onclick="memoryFlipTile(this,\'' + letters[c] + "')\"></div>"
+	}
+	document.getElementById("game-box").innerHTML = d
+}
+
+function memoryFlipTile(d, f) {
+	clicks += 1;
+	document.getElementById("clicks").innerHTML = clicks;
+	if (d.innerHTML == "" && memory_values.length < 2) {
+		d.style.background = "0087cc";
+		d.innerHTML = f;
+		if (memory_values.length == 0) {
+			memory_values.push(f);
+			memory_tile_ids.push(d.id)
+		} else {
+			if (memory_values.length == 1) {
+				memory_values.push(f);
+				memory_tile_ids.push(d.id);
+				if (memory_values[0] == memory_values[1]) {
+					tiles_flipped += 2;
+					memory_values = [];
+					memory_tile_ids = [];
+					if (tiles_flipped == letters.length) {
+						alert("Congrats, you completed the game in " + clicks + " clicks.."+"and time required is"+value+"s");
+						stop()
+					}
+				} else {
+					function e() {
+						var a = document.getElementById(memory_tile_ids[0]);
+						var b = document.getElementById(memory_tile_ids[1]);
+						a.innerHTML = "";
+						b.innerHTML = "";
+						memory_values = [];
+						memory_tile_ids = []
+					}
+					setTimeout(e, 200)
+				}
+			}
+		}
+	}
+};
+
+var stop = function () {
+	clearInterval(timerInterval)
+};
+	
+</script>
+</body>
+</html>
